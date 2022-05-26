@@ -78,6 +78,8 @@ const char kAutocompleteEnabled[] = "brave.autocomplete_enabled";
 const char kTopSiteSuggestionsEnabled[] = "brave.top_site_suggestions_enabled";
 const char kBraveSuggestedSiteSuggestionsEnabled[] =
     "brave.brave_suggested_site_suggestions_enabled";
+const char kHistorySuggestionsEnabled[] = "brave.history_suggestions_enabled";
+const char kBookmarkSuggestionsEnabled[] = "brave.bookmark_suggestions_enabled";
 const char kBraveDarkMode[] = "brave.dark_mode";
 const char kOtherBookmarksMigrated[] = "brave.other_bookmarks_migrated";
 const char kBraveShieldsSettingsVersion[] = "brave.shields_settings_version";

@@ -376,6 +376,8 @@ void RegisterProfilePrefs(user_prefs::PrefRegistrySyncable* registry) {
   registry->RegisterBooleanPref(kAutocompleteEnabled, true);
   registry->RegisterBooleanPref(kTopSiteSuggestionsEnabled, true);
   registry->RegisterBooleanPref(kBraveSuggestedSiteSuggestionsEnabled, false);
+  registry->RegisterBooleanPref(kHistorySuggestionsEnabled, true);
+  registry->RegisterBooleanPref(kBookmarkSuggestionsEnabled, true);
 
   // Password leak detection should be disabled
   registry->SetDefaultPrefValue(

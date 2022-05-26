@@ -63,6 +63,8 @@ extern const char kAlwaysShowBookmarkBarOnNTP[];
 extern const char kAutocompleteEnabled[];
 extern const char kTopSiteSuggestionsEnabled[];
 extern const char kBraveSuggestedSiteSuggestionsEnabled[];
+extern const char kHistorySuggestionsEnabled[];
+extern const char kBookmarkSuggestionsEnabled[];
 extern const char kBraveDarkMode[];
 extern const char kOtherBookmarksMigrated[];
 extern const char kBraveShieldsSettingsVersion[];
