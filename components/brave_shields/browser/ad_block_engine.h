@@ -69,7 +69,7 @@ class AdBlockEngine : public base::SupportsWeakPtr<AdBlockEngine> {
       const std::vector<std::string>& ids,
       const std::vector<std::string>& exceptions);
 
-  void Load(bool deserialize,
+  absl::optional<adblock::FilterListMetadata> Load(bool deserialize,
             const DATFileDataBuffer& dat_buf,
             const std::string& resources_json);
 
@@ -87,7 +87,7 @@ class AdBlockEngine : public base::SupportsWeakPtr<AdBlockEngine> {
   void AddKnownTagsToAdBlockInstance();
   void UpdateAdBlockClient(std::unique_ptr<adblock::Engine> ad_block_client,
                            const std::string& resources_json);
-  void OnListSourceLoaded(const DATFileDataBuffer& filters,
+  adblock::FilterListMetadata OnListSourceLoaded(const DATFileDataBuffer& filters,
                           const std::string& resources_json);
 
   void OnDATLoaded(const DATFileDataBuffer& dat_buf,

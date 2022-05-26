@@ -68,6 +68,14 @@ void AdBlockService::SourceProviderObserver::OnDATLoaded(
       &SourceProviderObserver::OnResourcesLoaded, weak_factory_.GetWeakPtr()));
 }
 
+namespace {
+void OnMetadataMaybeRetrievedStatic(base::WeakPtr<AdBlockService::SourceProviderObserver> self, absl::optional<adblock::FilterListMetadata> maybe_metadata) {
+  if (self) {
+    self->OnMetadataMaybeRetrieved(maybe_metadata);
+  }
+}
+}  // namespace
+
 void AdBlockService::SourceProviderObserver::OnResourcesLoaded(
     const std::string& resources_json) {
   if (dat_buf_.empty()) {
@@ -75,10 +83,21 @@ void AdBlockService::SourceProviderObserver::OnResourcesLoaded(
         FROM_HERE, base::BindOnce(&AdBlockEngine::AddResources, adblock_engine_,
                                   resources_json));
   } else {
-    task_runner_->PostTask(
+    task_runner_->PostTaskAndReplyWithResult(
         FROM_HERE,
         base::BindOnce(&AdBlockEngine::Load, adblock_engine_, deserialize_,
-                       std::move(dat_buf_), resources_json));
+                       std::move(dat_buf_), resources_json),
+        base::BindOnce(&OnMetadataMaybeRetrievedStatic, weak_factory_.GetWeakPtr()));
+  }
+}
+
+void AdBlockService::SourceProviderObserver::OnMetadataMaybeRetrieved(const absl::optional<adblock::FilterListMetadata> maybe_metadata) {
+  if (maybe_metadata) {
+    if (maybe_metadata->title) {
+      LOG(ERROR) << *maybe_metadata->title;
+    } else {
+      LOG(ERROR) << "list metadata loaded, with no title";
+    }
   }
 }
 

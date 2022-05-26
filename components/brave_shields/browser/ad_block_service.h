@@ -17,6 +17,7 @@
 #include "base/sequence_checker.h"
 #include "base/task/sequenced_task_runner.h"
 #include "base/values.h"
+#include "brave/components/adblock_rust_ffi/src/wrapper.h"
 #include "brave/components/brave_shields/browser/ad_block_filters_provider.h"
 #include "brave/components/brave_shields/browser/ad_block_resource_provider.h"
 #include "components/keyed_service/core/keyed_service.h"
@@ -61,6 +62,8 @@ class AdBlockService {
     SourceProviderObserver(const SourceProviderObserver&) = delete;
     SourceProviderObserver& operator=(const SourceProviderObserver&) = delete;
     ~SourceProviderObserver() override;
+
+    void OnMetadataMaybeRetrieved(const absl::optional<adblock::FilterListMetadata> maybe_metadata);
 
    private:
     // AdBlockFiltersProvider::Observer
