@@ -1,0 +1,12 @@
+#ifndef BRAVE_CHROMIUM_SRC_COMPONENTS_OMNIBOX_BROWSER_SEARCH_PROVIDER_H_
+#define BRAVE_CHROMIUM_SRC_COMPONENTS_OMNIBOX_BROWSER_SEARCH_PROVIDER_H_
+
+#define DoHistoryQuery virtual DoHistoryQuery
+#define BRAVE_SEARCH_PROVIDER_H
+
+#include "src/components/omnibox/browser/search_provider.h"
+
+#undef BRAVE_SEARCH_PROVIDER_H
+#undef DoHistoryQuery
+
+#endif  // BRAVE_CHROMIUM_SRC_COMPONENTS_OMNIBOX_BROWSER_SEARCH_PROVIDER_H_
