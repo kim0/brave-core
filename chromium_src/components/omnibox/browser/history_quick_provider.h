@@ -1,5 +1,3 @@
-#include "brave/components/omnibox/browser/brave_history_quick_provider.h"
-
 #ifndef BRAVE_CHROMIUM_SRC_COMPONENTS_OMNIBOX_BROWSER_HISTORY_QUICK_PROVIDER_H_
 #define BRAVE_CHROMIUM_SRC_COMPONENTS_OMNIBOX_BROWSER_HISTORY_QUICK_PROVIDER_H_
 
