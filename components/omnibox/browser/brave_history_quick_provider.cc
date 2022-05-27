@@ -10,9 +10,7 @@ BraveHistoryQuickProvider::BraveHistoryQuickProvider(
     AutocompleteProviderClient* client)
     : HistoryQuickProvider(client) {}
 
-BraveHistoryQuickProvider::~BraveHistoryQuickProvider() {
-  HistoryQuickProvider::~HistoryQuickProvider();
-}
+BraveHistoryQuickProvider::~BraveHistoryQuickProvider() = default;
 
 void BraveHistoryQuickProvider::Start(const AutocompleteInput& input,
                                       bool minimal_changes) {

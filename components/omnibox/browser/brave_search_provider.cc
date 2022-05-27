@@ -12,9 +12,7 @@ BraveSearchProvider::BraveSearchProvider(AutocompleteProviderClient* provider,
                                          AutocompleteProviderListener* listener)
     : SearchProvider(provider, listener) {}
 
-BraveSearchProvider::~BraveSearchProvider() {
-  SearchProvider::~SearchProvider();
-}
+BraveSearchProvider::~BraveSearchProvider() = default;
 
 void BraveSearchProvider::DoHistoryQuery(bool minimal_changes) {
   if (!client()->GetPrefs()->GetBoolean(kHistorySuggestionsEnabled)) {
