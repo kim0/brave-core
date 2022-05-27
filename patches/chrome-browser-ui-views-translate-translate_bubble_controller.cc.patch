@@ -1,0 +1,13 @@
+diff --git a/chrome/browser/ui/views/translate/translate_bubble_controller.cc b/chrome/browser/ui/views/translate/translate_bubble_controller.cc
+index 02b50951e03e47c62059510ba34f773a871ed208..ca885dfa76c4169303501c0b26a5b5a656d31802 100644
+--- a/chrome/browser/ui/views/translate/translate_bubble_controller.cc
++++ b/chrome/browser/ui/views/translate/translate_bubble_controller.cc
+@@ -61,7 +61,7 @@ views::Widget* TranslateBubbleController::ShowTranslateBubble(
+   if (model_factory_callback_) {
+     model = std::move(model_factory_callback_).Run();
+   } else {
+-    auto ui_delegate = std::make_unique<translate::TranslateUIDelegate>(
++    auto ui_delegate = MAKE_BRAVE_TRANSLATE_BUBBLE_VIEW(
+         ChromeTranslateClient::GetManagerFromWebContents(web_contents)
+             ->GetWeakPtr(),
+         source_language, target_language);

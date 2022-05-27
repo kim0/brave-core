@@ -20,9 +20,6 @@
   FRIEND_TEST_ALL_PREFIXES(BraveTranslateBubbleViewTest, TranslateButton); \
   FRIEND_TEST_ALL_PREFIXES(BraveTranslateBubbleViewTest, CancelButton);    \
                                                                            \
-  template <typename... Args>                                              \
-  static TranslateBubbleView* MakeTranslateBubbleView(Args&&... args);     \
-                                                                           \
  public:                                                                   \
   virtual int GetTitleBeforeTranslateTitle();                              \
                                                                            \
