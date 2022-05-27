@@ -3,6 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+#include "brave/components/omnibox/browser/brave_search_provider.h"
 #include "brave/components/omnibox/browser/suggested_sites_provider.h"
 #include "brave/components/omnibox/browser/topsites_provider.h"
 
