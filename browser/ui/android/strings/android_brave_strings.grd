@@ -3037,6 +3037,12 @@ If you don't accept this request, VPN will not reconnect and your internet conne
     <message name="IDS_COULDNT_GET_MATCHING_TIMEZONE" desc="Brave vpn error message">
       Couldn't get matching timezone for : <ph name="VALUE">%1$s</ph>
     </message>
+    <message name="IDS_SHOW_BRAVE_STATS" desc="New tab page settings title">
+      Show Brave Stats
+    </message>
+    <message name="IDS_SHOW_TOP_SITES" desc="New tab page settings title">
+      Show Top sites
+    </message>
   </messages>
   </release>
 </grit>
