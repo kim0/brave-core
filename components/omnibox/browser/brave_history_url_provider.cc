@@ -12,11 +12,12 @@ BraveHistoryURLProvider::~BraveHistoryURLProvider() = default;
 
 void BraveHistoryURLProvider::Start(const AutocompleteInput& input,
                                     bool minimal_changes) {
-  if (!client()->GetPrefs()->GetBoolean(kHistorySuggestionsEnabled)) {
-    // TODO: For some reason if we return here then we get a crash on entering a
-    // URL.
-    // return;
-  }
+  // Unlike other providers, we can't simply stop the search here. The
+  // HistoryURLProvider doesn't only search history, it is also responsible for
+  // navigating to exact urls (i.e. https://example.com/), so we need to disable
+  // **ONLY** history searches. Fortunately, Chromium has a flag for this.
+  search_url_database_ =
+      client()->GetPrefs()->GetBoolean(kHistorySuggestionsEnabled);
 
   HistoryURLProvider::Start(input, minimal_changes);
 }
