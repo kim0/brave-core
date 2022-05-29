@@ -5,6 +5,8 @@
 import("//brave/components/binance/browser/buildflags/buildflags.gni")
 
 brave_components_omnibox_browser_sources = [
+  "//brave/components/omnibox/browser/brave_bookmark_provider.cc",
+  "//brave/components/omnibox/browser/brave_bookmark_provider.h",
   "//brave/components/omnibox/browser/brave_history_quick_provider.cc",
   "//brave/components/omnibox/browser/brave_history_quick_provider.h",
   "//brave/components/omnibox/browser/brave_history_url_provider.cc",
