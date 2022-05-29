@@ -56,6 +56,13 @@ class KeyringService : public KeyedService, public mojom::KeyringService {
   static const base::Value* GetPrefForKeyring(PrefService* prefs,
                                               const std::string& key,
                                               const std::string& id);
+  static const base::Value* GetImportedAccountsPrefForKeyring(
+      PrefService* prefs,
+      const std::string& id);
+  static void SetImportedAccountsPrefForKeyring(PrefService* prefs,
+                                                base::Value value,
+                                                const std::string& id);
+
   static base::Value* GetPrefForKeyringUpdate(PrefService* prefs,
                                               const std::string& key,
                                               const std::string& id);
