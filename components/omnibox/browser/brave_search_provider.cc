@@ -20,11 +20,8 @@ BraveSearchProvider::BraveSearchProvider(AutocompleteProviderClient* provider,
 BraveSearchProvider::~BraveSearchProvider() = default;
 
 void BraveSearchProvider::DoHistoryQuery(bool minimal_changes) {
-  if (!client()->GetPrefs()->GetBoolean(kHistorySuggestionsEnabled)) {
-    raw_default_history_results_.clear();
-    raw_keyword_history_results_.clear();
+  if (!client()->GetPrefs()->GetBoolean(kHistorySuggestionsEnabled))
     return;
-  }
 
   SearchProvider::DoHistoryQuery(minimal_changes);
 }
