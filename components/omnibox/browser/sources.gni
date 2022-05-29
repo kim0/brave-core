@@ -15,6 +15,8 @@ brave_components_omnibox_browser_sources = [
   "//brave/components/omnibox/browser/brave_omnibox_client.h",
   "//brave/components/omnibox/browser/brave_search_provider.cc",
   "//brave/components/omnibox/browser/brave_search_provider.h",
+  "//brave/components/omnibox/browser/brave_shortcuts_provider.cc",
+  "//brave/components/omnibox/browser/brave_shortcuts_provider.h",
   "//brave/components/omnibox/browser/constants.cc",
   "//brave/components/omnibox/browser/constants.h",
   "//brave/components/omnibox/browser/suggested_sites_match.cc",
