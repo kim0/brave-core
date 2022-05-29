@@ -2,7 +2,9 @@
 #define BRAVE_CHROMIUM_SRC_COMPONENTS_OMNIBOX_BROWSER_SEARCH_PROVIDER_H_
 
 #define DoHistoryQuery virtual DoHistoryQuery
-#define BRAVE_SEARCH_PROVIDER_H private: friend class BraveSearchProvider;
+#define BRAVE_SEARCH_PROVIDER_H \
+ private:                       \
+  friend class BraveSearchProvider;
 
 #include "src/components/omnibox/browser/search_provider.h"
 

@@ -1,7 +1,9 @@
 #ifndef BRAVE_CHROMIUM_SRC_COMPONENTS_OMNIBOX_BROWSER_HISTORY_URL_PROVIDER_H_
 #define BRAVE_CHROMIUM_SRC_COMPONENTS_OMNIBOX_BROWSER_HISTORY_URL_PROVIDER_H_
 
-#define BRAVE_HISTORY_URL_PROVIDER_H private: friend class BraveHistoryURLProvider;
+#define BRAVE_HISTORY_URL_PROVIDER_H \
+ private:                            \
+  friend class BraveHistoryURLProvider;
 
 #include "src/components/omnibox/browser/history_url_provider.h"
 

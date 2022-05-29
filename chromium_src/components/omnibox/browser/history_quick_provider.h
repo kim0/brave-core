@@ -1,7 +1,9 @@
 #ifndef BRAVE_CHROMIUM_SRC_COMPONENTS_OMNIBOX_BROWSER_HISTORY_QUICK_PROVIDER_H_
 #define BRAVE_CHROMIUM_SRC_COMPONENTS_OMNIBOX_BROWSER_HISTORY_QUICK_PROVIDER_H_
 
-#define BRAVE_HISTORY_QUICK_PROVIDER_H private: friend class BraveHistoryQuickProvider;
+#define BRAVE_HISTORY_QUICK_PROVIDER_H \
+ private:                              \
+  friend class BraveHistoryQuickProvider;
 
 #include "src/components/omnibox/browser/history_quick_provider.h"
 

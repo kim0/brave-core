@@ -3,12 +3,12 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+#include "brave/components/omnibox/browser/brave_bookmark_provider.h"
+#include "brave/components/omnibox/browser/brave_history_quick_provider.h"
+#include "brave/components/omnibox/browser/brave_history_url_provider.h"
 #include "brave/components/omnibox/browser/brave_search_provider.h"
 #include "brave/components/omnibox/browser/suggested_sites_provider.h"
 #include "brave/components/omnibox/browser/topsites_provider.h"
-#include "brave/components/omnibox/browser/brave_history_quick_provider.h"
-#include "brave/components/omnibox/browser/brave_history_url_provider.h"
-#include "brave/components/omnibox/browser/brave_bookmark_provider.h"
 #include "components/omnibox/browser/clipboard_provider.h"
 
 #define SearchProvider BraveSearchProvider
@@ -27,4 +27,3 @@
 #undef HistoryURLProvider
 #undef HistoryQuickProvider
 #undef SearchProvider
-
