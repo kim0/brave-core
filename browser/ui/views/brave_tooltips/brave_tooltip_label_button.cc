@@ -16,8 +16,7 @@ BraveTooltipLabelButton::BraveTooltipLabelButton(PressedCallback callback,
 
 BraveTooltipLabelButton::~BraveTooltipLabelButton() = default;
 
-ui::Cursor BraveTooltipLabelButton::GetCursor(
-    const ui::MouseEvent& event) {
+ui::Cursor BraveTooltipLabelButton::GetCursor(const ui::MouseEvent& event) {
   if (!GetEnabled())
     return ui::Cursor();
   return ui::mojom::CursorType::kHand;
