@@ -13,6 +13,8 @@ FakeAutocompleteProviderClient::FakeAutocompleteProviderClient() {
   auto* registry = pref_service_->registry();
   registry->RegisterBooleanPref(kTopSiteSuggestionsEnabled, true);
   registry->RegisterBooleanPref(kBraveSuggestedSiteSuggestionsEnabled, true);
+  registry->RegisterBooleanPref(kHistorySuggestionsEnabled, true);
+  registry->RegisterBooleanPref(kBookmarkSuggestionsEnabled, true);
 }
 
 FakeAutocompleteProviderClient::~FakeAutocompleteProviderClient() = default;

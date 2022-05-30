@@ -350,6 +350,7 @@ test("brave_unit_tests") {
       "//brave/components/omnibox/browser/fake_autocomplete_provider_client.h",
       "//brave/components/omnibox/browser/suggested_sites_provider_unittest.cc",
       "//brave/components/omnibox/browser/topsites_provider_unittest.cc",
+      "//brave/components/omnibox/browser/brave_bookmark_provider_unittest.cc",
     ]
     deps += [
       "//brave/app:brave_generated_resources_grit",
