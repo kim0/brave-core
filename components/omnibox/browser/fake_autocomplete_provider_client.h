@@ -8,7 +8,9 @@
 
 #include <memory>
 
+#include "base/memory/scoped_refptr.h"
 #include "components/omnibox/browser/mock_autocomplete_provider_client.h"
+#include "components/omnibox/browser/shortcuts_backend.h"
 #include "components/prefs/testing_pref_service.h"
 
 class FakeAutocompleteProviderClient : public MockAutocompleteProviderClient {
@@ -21,8 +23,15 @@ class FakeAutocompleteProviderClient : public MockAutocompleteProviderClient {
   ~FakeAutocompleteProviderClient() override;
   PrefService* GetPrefs() const override;
 
+  void set_shortcuts_backend(scoped_refptr<ShortcutsBackend> shortcuts_backend) {
+      shortcuts_backend_ = shortcuts_backend;
+  }
+
+  scoped_refptr<ShortcutsBackend> GetShortcutsBackend() override;
+
  private:
   std::unique_ptr<TestingPrefServiceSimple> pref_service_;
+  scoped_refptr<ShortcutsBackend> shortcuts_backend_;
 };
 
 #endif  // BRAVE_COMPONENTS_OMNIBOX_BROWSER_FAKE_AUTOCOMPLETE_PROVIDER_CLIENT_H_

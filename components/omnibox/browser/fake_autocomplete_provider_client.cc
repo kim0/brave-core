@@ -5,7 +5,9 @@
 
 #include "brave/components/omnibox/browser/fake_autocomplete_provider_client.h"
 
+#include "base/memory/scoped_refptr.h"
 #include "brave/common/pref_names.h"
+#include "components/omnibox/browser/shortcuts_backend.h"
 #include "components/prefs/pref_registry_simple.h"
 
 FakeAutocompleteProviderClient::FakeAutocompleteProviderClient() {
@@ -21,4 +23,8 @@ FakeAutocompleteProviderClient::~FakeAutocompleteProviderClient() = default;
 
 PrefService* FakeAutocompleteProviderClient::GetPrefs() const {
   return pref_service_.get();
+}
+
+scoped_refptr<ShortcutsBackend> FakeAutocompleteProviderClient::GetShortcutsBackend() {
+  return shortcuts_backend_;
 }
