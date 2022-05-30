@@ -242,8 +242,7 @@ const char kWindowsXPVistaDeprecationURL[] =
     "https://support.brave.com/";
 #endif
 
-const char kChromeSyncLearnMoreURL[] =
-    "https://support.brave.com/";
+const char kChromeSyncLearnMoreURL[] = "https://support.brave.com/";
 
 #if BUILDFLAG(ENABLE_PLUGINS)
 const char kOutdatedPluginLearnMoreURL[] =
