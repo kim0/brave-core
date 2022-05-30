@@ -28,3 +28,7 @@ PrefService* FakeAutocompleteProviderClient::GetPrefs() const {
 scoped_refptr<ShortcutsBackend> FakeAutocompleteProviderClient::GetShortcutsBackend() {
   return shortcuts_backend_;
 }
+
+scoped_refptr<ShortcutsBackend> FakeAutocompleteProviderClient::GetShortcutsBackendIfExists() {
+  return shortcuts_backend_;
+}

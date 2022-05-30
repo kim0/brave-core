@@ -28,6 +28,7 @@ class FakeAutocompleteProviderClient : public MockAutocompleteProviderClient {
   }
 
   scoped_refptr<ShortcutsBackend> GetShortcutsBackend() override;
+  scoped_refptr<ShortcutsBackend> GetShortcutsBackendIfExists() override;
 
  private:
   std::unique_ptr<TestingPrefServiceSimple> pref_service_;
