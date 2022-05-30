@@ -208,8 +208,7 @@ void BodySnifferURLLoader::CompleteLoading(std::string body) {
 
   // Send deferred message.
   destination_url_loader_client_->OnReceiveResponse(
-      network::mojom::URLResponseHead::New(),
-      std::move(body_to_send));
+      network::mojom::URLResponseHead::New(), std::move(body_to_send));
 
   if (bytes_remaining_in_buffer_) {
     SendReceivedBodyToClient();
