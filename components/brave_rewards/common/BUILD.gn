@@ -14,9 +14,14 @@ static_library("common") {
   sources = [
     "pref_names.cc",
     "pref_names.h",
+    "rewards_args.cc",
+    "rewards_args.h",
     "url_constants.cc",
     "url_constants.h",
   ]
 
-  deps = [ ":features" ]
+  deps = [
+    ":features",
+    "//third_party/abseil-cpp:absl",
+  ]
 }

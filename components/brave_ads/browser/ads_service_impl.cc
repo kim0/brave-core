@@ -10,7 +10,6 @@
 
 #include "base/base64.h"
 #include "base/bind.h"
-#include "base/command_line.h"
 #include "base/containers/flat_map.h"
 #include "base/cxx17_backports.h"
 #include "base/debug/dump_without_crashing.h"
@@ -26,7 +25,6 @@
 #include "base/metrics/field_trial_params.h"
 #include "base/no_destructor.h"
 #include "base/strings/string_number_conversions.h"
-#include "base/strings/string_split.h"
 #include "base/strings/string_util.h"
 #include "base/strings/utf_string_conversions.h"
 #include "base/task/post_task.h"
@@ -54,7 +52,6 @@
 #include "brave/components/brave_ads/browser/service_sandbox_type.h"
 #include "brave/components/brave_ads/common/features.h"
 #include "brave/components/brave_ads/common/pref_names.h"
-#include "brave/components/brave_ads/common/switches.h"
 #include "brave/components/brave_federated/data_store_service.h"
 #include "brave/components/brave_federated/data_stores/ad_notification_timing_data_store.h"
 #include "brave/components/brave_federated/features.h"
@@ -62,6 +59,7 @@
 #include "brave/components/brave_rewards/browser/rewards_p3a.h"
 #include "brave/components/brave_rewards/browser/rewards_service.h"
 #include "brave/components/brave_rewards/common/pref_names.h"
+#include "brave/components/brave_rewards/common/rewards_args.h"
 #include "brave/components/brave_today/common/features.h"
 #include "brave/components/brave_today/common/pref_names.h"
 #include "brave/components/constants/pref_names.h"
@@ -937,58 +935,24 @@ void AdsServiceImpl::SetDebug() {
 }
 
 void AdsServiceImpl::ParseCommandLineSwitches() {
-  const base::CommandLine& command_line =
-      *base::CommandLine::ForCurrentProcess();
-  if (!command_line.HasSwitch(switches::kRewards)) {
-    return;
-  }
+  auto& args = brave_rewards::RewardsArgs::ForCurrentProcess();
 
-  const std::string switch_value =
-      command_line.GetSwitchValueASCII(switches::kRewards);
-  ParseCommandLineRewardsSwitchValue(switch_value);
-}
-
-void AdsServiceImpl::ParseCommandLineRewardsSwitchValue(
-    const std::string& switch_value) {
-  if (switch_value.empty()) {
-    return;
-  }
-
-  const std::vector<std::string> flags =
-      base::SplitString(base::ToLowerASCII(switch_value), ",",
-                        base::KEEP_WHITESPACE, base::SPLIT_WANT_NONEMPTY);
-
-  for (const auto& flag : flags) {
-    const std::vector<std::string> components = base::SplitString(
-        flag, "=", base::KEEP_WHITESPACE, base::SPLIT_WANT_NONEMPTY);
-    if (components.size() != 2) {
-      continue;
-    }
-
-    const std::string& name = components.at(0);
-    const std::string& value = components.at(1);
-
-    if (name == "staging") {
-      ads::mojom::Environment environment;
-
-      if (value == "true" || value == "1") {
+  if (args.environment) {
+    ads::mojom::Environment environment;
+    switch (*args.environment) {
+      case brave_rewards::RewardsArgs::Environment::kDevelopment:
+      case brave_rewards::RewardsArgs::Environment::kStaging:
         environment = ads::mojom::Environment::kStaging;
-      } else {
+        break;
+      case brave_rewards::RewardsArgs::Environment::kProduction:
         environment = ads::mojom::Environment::kProduction;
-      }
-
-      bat_ads_service_->SetEnvironment(environment, base::NullCallback());
-    } else if (name == "debug") {
-      bool is_debug;
-
-      if (value == "true" || value == "1") {
-        is_debug = true;
-      } else {
-        is_debug = false;
-      }
-
-      bat_ads_service_->SetDebug(is_debug, base::NullCallback());
+        break;
     }
+    bat_ads_service_->SetEnvironment(environment, base::NullCallback());
+  }
+
+  if (args.debug) {
+    bat_ads_service_->SetDebug(true, base::NullCallback());
   }
 }
 

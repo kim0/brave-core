@@ -60,7 +60,7 @@ class RewardsServiceJPTest : public testing::Test {
     RewardsServiceFactory::SetServiceForTesting(std::move(rewards_));
     rewards_service_ = static_cast<RewardsServiceImpl*>(
         RewardsServiceFactory::GetForProfile(profile()));
-    rewards_service_->HandleFlags("countryid=19024");
+    rewards_service_->HandleFlagsForTesting("countryid=19024");
     ASSERT_TRUE(RewardsServiceFactory::GetInstance() != NULL);
     ASSERT_TRUE(rewards_service() != NULL);
   }
