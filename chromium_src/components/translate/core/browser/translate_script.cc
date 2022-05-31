@@ -6,18 +6,18 @@
 #include "components/translate/core/browser/translate_script.h"
 
 #include "base/callback.h"
+#include "base/strings/escape.h"
 #include "base/strings/strcat.h"
 #include "base/strings/stringprintf.h"
 #include "base/threading/sequenced_task_runner_handle.h"
 #include "brave/components/constants/brave_services_key.h"
 #include "brave/components/translate/core/common/brave_translate_constants.h"
 #include "brave/components/translate/core/common/brave_translate_features.h"
-#include "net/base/escape.h"
 
 namespace translate {
 namespace google_apis {
 std::string GetAPIKey() {
-  return net::EscapeQueryParamValue(BUILDFLAG(BRAVE_SERVICES_KEY), true);
+  return base::EscapeQueryParamValue(BUILDFLAG(BRAVE_SERVICES_KEY), true);
 }
 }  // namespace google_apis
 }  // namespace translate
