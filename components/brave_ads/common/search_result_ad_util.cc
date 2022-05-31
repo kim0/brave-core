@@ -64,17 +64,12 @@ bool IsSearchResultAdViewedConfirmationUrl(const GURL& url) {
 
 std::string GetViewedSearchResultAdCreativeInstanceId(
     const network::ResourceRequest& request) {
-  if (!IsSearchResultAdConfirmationUrl(request.url,
-                                       kSearchResultAdsViewedPath)) {
-    return {};
-  }
-
-  if (request.method != net::HttpRequestHeaders::kPostMethod) {
+  if (!IsSearchResultAdViewedConfirmationUrl(request.url) ||
+      request.method != net::HttpRequestHeaders::kPostMethod) {
     return {};
   }
 
   const std::string payload_json = GetUploadData(request);
-  LOG(ERROR) << payload_json;
   const absl::optional<base::Value> payload_value =
       base::JSONReader::Read(payload_json);
   if (!payload_value) {

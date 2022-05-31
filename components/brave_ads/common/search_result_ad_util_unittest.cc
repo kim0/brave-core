@@ -11,8 +11,6 @@
 
 namespace brave_ads {
 
-namespace {
-
 TEST(SearchResultAdUtilTest, CheckSearchResultAdViewedConfirmationUrl) {
   EXPECT_TRUE(IsSearchResultAdViewedConfirmationUrl(
       GURL("https://search.anonymous.brave.com/v3/confirmation")));
@@ -127,7 +125,5 @@ TEST(SearchResultAdUtilTest, CheckGetViewedSearchResultAdCreativeInstanceId) {
       json_payload.data(), json_payload.size());
   EXPECT_TRUE(GetViewedSearchResultAdCreativeInstanceId(bad_request).empty());
 }
-
-}  // namespace
 
 }  // namespace brave_ads
